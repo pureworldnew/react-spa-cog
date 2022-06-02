@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./pages/Header";
+import Home from "./pages/Home";
+import Footer from "./pages/Footer";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
 
+function AddStudent() {
+  return (
+    <>
+      <main>Weldome to the add student</main>
+    </>
+  );
+}
+
+function EditStudent() {
+  return (
+    <>
+      <main>Weldome to the edit student</main>
+    </>
+  );
+}
+
+function About() {
+  return (
+    <>
+      <main>Welcome to the About page</main>
+    </>
+  );
+}
+
+function NoPage() {
+  return (
+    <>
+      <main>Page not found</main>
+    </>
+  );
+}
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="addstudent" element={<AddStudent />} />
+        <Route path="editstudent" element={<EditStudent />} />
+        <Route path="about" element={<About />} />
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+      <Footer />
+    </>
   );
 }
 
