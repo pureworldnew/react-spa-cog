@@ -4,16 +4,9 @@ import logo from "../logo.svg";
 import { NavLink } from "react-router-dom";
 
 function Header() {
-  // This styling will be applied to a <NavLink> when the
-  // route that it links to is currently selected.
-
-  let myStyle = {
-    textDecoration: "none",
-  };
-
   return (
     <>
-      <Navbar bg="light">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -24,20 +17,23 @@ function Header() {
               height="100"
             />
           </Navbar.Brand>
-          <Nav className="mr-auto nav-wrapper">
-            <NavLink to="/" className="nav-item">
-              Home
-            </NavLink>
-            <NavLink to="addstudent" className="nav-item">
-              Add Student
-            </NavLink>
-            <NavLink to="addstudent" className="nav-item">
-              About Us
-            </NavLink>
-          </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto"></Nav>
+            <Nav>
+              <Nav.Link as={NavLink} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="addstudent">
+                Add Student
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="editstudent">
+                About Us
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
-      <br />
     </>
   );
 }

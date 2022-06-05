@@ -4,7 +4,12 @@ import Home from "./pages/Home";
 import Footer from "./pages/Footer";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV === "development") {
+  console.log(process.env.NODE_ENV);
+  const { worker } = require("./mocks/browser");
+  worker.start();
+}
 function AddStudent() {
   return (
     <>

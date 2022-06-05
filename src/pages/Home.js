@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import banner from "../banner.jpg";
-import { Container, Table } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import CustomTable from "../components/CustomTable";
 function Home() {
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get("/user");
+      console.log("response", response);
+    };
+    fetchData().catch((err) => console.error(err));
+  }, []);
   return (
     <Container>
       <div className="main-wrapper">
@@ -12,38 +21,7 @@ function Home() {
           <h6>GRAND SPACE, PORTLAND, 21-26 SEPT 2014</h6>
         </div>
       </div>
-      <div className="">
-        <h3 className="text-align-center">Student Details</h3>
-        <Table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td colSpan={2}>Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
+      <CustomTable tableTitle="Student Details" />
     </Container>
   );
 }
