@@ -6,7 +6,7 @@ import CustomTable from "../components/CustomTable";
 function Home() {
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get("/user");
+      let response = await axios.get("/api/notes");
       console.log("response", response);
     };
     fetchData().catch((err) => console.error(err));
@@ -14,7 +14,7 @@ function Home() {
   return (
     <Container>
       <div className="main-wrapper">
-        <img alt="banner image" src={banner} style={{ width: "100%" }} />
+        <img alt="" src={banner} style={{ width: "100%" }} />
         <div className="span-centered">
           <span>THE ANNUAL CONFERENCE</span>
           <div className="border-top hr-style mx-auto py-1 my-4"></div>
