@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import banner from "../banner.jpg";
+import React from "react";
 import { Container } from "react-bootstrap";
 import CustomTable from "../components/CustomTable";
-const tableColumns = {
-  id: "#",
-  name: "Name",
-  dob: "Dob",
-  city: "City",
-  state: "State",
-  zip: "Zip",
-};
+import useFetch from "../hooks/useFetch";
+import banner from "../banner.jpg";
+import { tableColumns } from "../constants";
+
 function Home() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      let response = await axios.get("/getStudents");
-      setData(response.data.students);
-    };
-    fetchData().catch((err) => console.error(err));
-  }, []);
+  let data = useFetch("/getStudents", []);
   console.log("dATA", data);
   return (
     <Container>
