@@ -1,37 +1,25 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-function CustomTable({ tableTitle }) {
+function CustomTable({ tableTitle, tableData, tableColumns }) {
   return (
     <div className="student-table">
       <h3 className="text-align-center">{tableTitle}</h3>
       <Table responsive>
         <thead>
           <tr>
-            <th>#</th>
-            {Array.from({ length: 12 }).map((_, index) => (
-              <th key={index}>Table heading</th>
+            {Object.keys(tableColumns).map((colName, index) => (
+              <th key={index}>{tableColumns[colName]}</th>
             ))}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            {Array.from({ length: 12 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))}
-          </tr>
-          <tr>
-            <td>2</td>
-            {Array.from({ length: 12 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))}
-          </tr>
-          <tr>
-            <td>3</td>
-            {Array.from({ length: 12 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))}
-          </tr>
+          {tableData.map((val, id) => (
+            <tr key={id}>
+              {Object.keys(tableColumns).map((colName, index) => (
+                <td key={index}>{val[colName]}</td>
+              ))}
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>
