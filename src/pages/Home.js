@@ -1,13 +1,20 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Button } from "react-bootstrap";
 import CustomTable from "../components/CustomTable";
 import useFetch from "../hooks/useFetch";
 import banner from "../banner.jpg";
 import { tableColumns } from "../constants";
+import ConfirmModal from "../components/ConfirmModal";
 
 function Home() {
+  const [modalShow, setModalShow] = useState(false);
+
   let data = useFetch("/getStudents", []);
+
   console.log("dATA", data);
+  const onDeleteRow = (delRow) => {
+    setModalShow(true);
+  };
   return (
     <Container>
       <div className="main-wrapper">
@@ -22,7 +29,12 @@ function Home() {
         tableTitle="Student Details"
         tableData={data}
         tableColumns={tableColumns}
+        onDeleteRow={onDeleteRow}
       />
+      <div className="student-add">
+        <Button variant="primary">Add New Student</Button>
+      </div>
+      <ConfirmModal show={modalShow} onHide={() => setModalShow(false)} />
     </Container>
   );
 }

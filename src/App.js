@@ -4,14 +4,7 @@ import Home from "./pages/Home";
 import Footer from "./pages/Footer";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-
-function AddStudent() {
-  return (
-    <>
-      <main>Weldome to the add student</main>
-    </>
-  );
-}
+import AddStudent from "./pages/AddStudent";
 
 function EditStudent() {
   return (

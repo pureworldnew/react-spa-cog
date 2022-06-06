@@ -41,7 +41,7 @@
   text-align: center;
 }
 
-.student-table {
-  margin-top: 50px;
+.student-add {
   margin-bottom: 100px;
+  float: right;
 }
